@@ -1,0 +1,207 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[margin=1.0in]{geometry}
+%\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+%SetFonts
+
+%SetFonts
+
+% Macros
+\newcommand{\comment}[1]{\iffalse #1 \fi}
+%\newcommand{\comment}[1]{#1}
+
+\title{Experiments with k-NN Algorithm}
+\author{Maria Martinez \& Sebastian Cevallos}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+\begin{enumerate}
+\item
+Calculate the performance of the perceptron classifier on the 10-fold cross validation of the
+data (i.e. you should have 10 numbers) with the AveragePerceptronClassifier on the old
+binary data, i.e. ``titanic-train.perc.csv``. Use a reasonable number of iterations based on
+your experience from last assignment or from a small experiment.\\
+Also include the average of the 10 folds.\\
+Because the perceptron algorithm involves randomness (i.e. because it shuffles the examples
+each round), to do this properly:
+\begin{itemize}
+\item Generate a 10-fold cross validation. Only do this once for this experiment (i.e. don't
+keep repeatedly creating new 10-fold cross validations).
+\item On each of the splits of the data, run the perceptron 100 times and average those results
+to get a single value for that split.
+\item Repeat this for each of the 10 splits.
+\end{itemize}
+For any of the experiments below for the perceptron classifiers, make sure to follow this
+procedure to get consistent results.\\
+
+\textit{Results.} The accuracies of each run is reported below, to three significant figures.\\
+\begin{center}
+\begin{tabular} { | c | c |}
+	\hline
+	Fold number & Accuracy \\
+	\hline
+	1 & 0.749\comment{7183098591558}\\
+	2 & 0.733\comment{5211267605639}\\
+	3 & 0.519\comment{718309859156}\\
+	4 & 0.860\comment{2816901408454}\\
+	5 & 0.830\comment{9859154929586}\\
+	6 & 0.760\comment{5633802816905}\\
+	7 & 0.802\comment{8169014084494}\\
+	8 & 0.844\comment{6478873239437}\\
+	9 & 0.724\comment{507042253521}\\
+	10 & 0.741\comment{0666666666657}\\
+	Total & 0.756\comment{7827230046948}\\
+	\hline
+\end{tabular}
+\end{center}
+
+\item
+Calculate the accuracy on the 10 folds on the new non-binary data, i.e. ``titanic-train.real.csv".
+You should notice a pretty big difference here. Why do you think there is such a big difference
+(you don't have to write your answer)?\\
+
+\textit{Results.} The accuracies of each run on the new data is reported below, to three significant figures. \\
+\begin{center}
+\begin{tabular} { | c | c |}
+	\hline
+	Fold number & Accuracy \\
+	\hline
+	1 & 0.408\comment{45070422535207}\\
+	2 & 0.591\comment{5492957746479}\\
+	3 & 0.732\comment{3943661971838}\\
+	4 & 0.583\comment{9436619718308}\\
+	5 & 0.623\comment{0985915492949}\\
+	6 & 0.606\comment{1971830985924}\\
+	7 & 0.535\comment{2112676056326}\\
+	8 & 0.577\comment{6056338028163}\\
+	9 & 0.620\comment{8450704225341}\\
+	10 & 0.626\comment{6666666666656}\\
+	Total & 0.590\comment{5962441314552}\\
+	\hline
+\end{tabular}
+\end{center}
+
+
+\item
+Repeat experiments 1 and 2 for your new k-NN classifier.\\
+
+\textit{Results.} \begin{center} Experiment 1: Old Data \end{center}
+\begin{center}
+\begin{tabular} { | c | c |}
+	\hline
+	Fold number & Accuracy \\
+	\hline
+	1 & 0.661\comment{9718309859144}\\
+	2 & 0.619\comment{7183098591538}\\
+	3 & 0.521\comment{1267605633815}\\
+	4 & 0.732\comment{3943661971838}\\
+	5 & 0.830\comment{9859154929586}\\
+	6 & 0.774\comment{6478873239426}\\
+	7 & 0.746\comment{4788732394382}\\
+	8 & 0.802\comment{8169014084494}\\
+	9 & 0.704\comment{2253521126741}\\
+	10 & 0.680\comment{0000000000002}\\
+	Total & 0.707\comment{4366197183096}\\
+	\hline
+\end{tabular}
+\end{center} 
+
+
+\newpage
+\begin{center} Experiment 2: New Data \end{center}
+\begin{center}
+\begin{tabular} { | c | c |}
+	\hline
+	Fold number & Accuracy \\
+	\hline
+	1 & 0.676\comment{0563380281687}\\
+	2 & 0.661\comment{9718309859144}\\
+	3 & 0.718\comment{3098591549286}\\
+	4 & 0.619\comment{7183098591538}\\
+	5 & 0.633\comment{8028169014082}\\
+	6 & 0.563\comment{3802816901418}\\
+	7 & 0.563\comment{3802816901418}\\
+	8 & 0.633\comment{8028169014082}\\
+	9 & 0.746\comment{4788732394382}\\
+	10 & 0.520\comment{000000000001}\\
+	Total & 0.633\comment{6901408450705}\\
+	\hline
+\end{tabular}
+\end{center}
+
+\item Now, generate a table of scores (a spreadsheet would work well) with 10-fold scores on the
+following algorithm variants:
+\begin{itemize}
+\item k-NN with length normalization
+\item k-NN with feature normalization
+\item k-NN with length and feature normalization
+\item perceptron with length normalization
+\item perceptron with feature normalization
+\item perceptron with length and feature normalization
+\end{itemize}
+This should be a table with 60 numbers! \\
+
+\begin{center}
+\begin{tabular} { | c | c | c | c | c | c | c |}
+	\hline
+	Run & \multicolumn{3}{| c |}{k-NN} & \multicolumn{3}{| c |}{Perceptron} \\
+	\hline
+	 & \multicolumn{3}{| c |}{Normalization} & \multicolumn{3}{| c |}{Normalization} \\
+	 & Length & Feature & Both & Length & Feature & Both \\
+	 1 & 0.760\comment{5633802816905} & 0.591\comment{5492957746479} & 0.605\comment{6338028169023} & 0.408\comment{45070422535207} & 0.643\comment{0985915492958} & 0.639\comment{0140845070422} \\
+	 2 & 0.732\comment{3943661971838} & 0.676\comment{0563380281687} & 0.718\comment{3098591549286} & 0.591\comment{5492957746479} & 0.767\comment{1830985915495} & 0.802\comment{1126760563366} \\
+	 3 & 0.704\comment{2253521126741} & 0.845\comment{0704225352114} & 0.830\comment{9859154929586} & 0.746\comment{4788732394382} & 0.816\comment{0563380281688} & 0.802\comment{3943661971817} \\
+	 4 & 0.661\comment{9718309859144} & 0.760\comment{5633802816905} & 0.746\comment{4788732394382} & 0.563\comment{3802816901418} & 0.803\comment{3802816901402} &  0.811\comment{1267605633797}\\
+	 5 & 0.647\comment{8873239436633} & 0.746\comment{4788732394382} & 0.732\comment{3943661971838} & 0.633\comment{8028169014082} & 0.782\comment{5352112676053} & 0.756\comment{1971830985922} \\
+	 6 & 0.577\comment{4647887323937} & 0.746\comment{4788732394382} & 0.732\comment{3943661971838} & 0.605\comment{6338028169023} & 0.790\comment{9859154929574} & 0.774\comment{5070422535207} \\
+	 7 & 0.521\comment{1267605633815} & 0.830\comment{9859154929586} & 0.830\comment{9859154929586} & 0.535\comment{2112676056326} & 0.845\comment{2112676056345} & 0.837\comment{1830985915496} \\
+	 8 & 0.732\comment{3943661971838} & 0.774\comment{6478873239426} & 0.788\comment{7323943661972} & 0.591\comment{5492957746479} & 0.824\comment{6478873239438} &  0.797\comment{0422535211266}\\
+	 9 & 0.704\comment{2253521126741} & 0.746\comment{4788732394382} & 0.732\comment{3943661971838} & 0.633\comment{8028169014082} & 0.804\comment{3661971830975} & 0.761\comment{1267605633807} \\
+	 10 & 0.533\comment{333333333333} & 0.813\comment{3333333333327} & 0.813\comment{3333333333327} & 0.626\comment{6666666666656} & 0.846\comment{6666666666677} &  0.798\comment{1333333333325}\\
+	 % Average & 0.6575586854460094 & 0.7531643192488267 & 0.7531643192488268 & 0.5936525821596245 & 0.7924131455399059 & 0.7778837558685442
+	\hline
+\end{tabular}
+\end{center}
+
+\item
+Pick a few (say 4-5) of these results (including the earlier results) and calculate their t-test
+score to figure out if the differences are significant. Pick a couple of the experimental results
+that are close and a couple where they're further apart.\\
+I'd suggest just using Excel/open office to calculate these, though you can use whatever you'd
+like. If you use these the t-test function is what you want to use. The first two parameters
+are the two data sets, the third parameter (tails) should be 2 (two-tailed test) and the fourth
+parameter (type) should be 1 (paired t-test).\\
+List the comparisons that you made and their t-test p values. \\
+
+\begin{center}
+\begin{tabular} {| c | c |}
+	\hline
+	Comparison & p value\\
+	\hline
+	k-NN, both normalizers vs. feature normalizer & 1\\
+	k-NN, both normalizers vs. length normalizer & 0.052758937\\
+	Perceptron, both normalizers vs. length normalizer & $1.72771 \times 10^{-5}$\\
+	Perceptron, feature normalizer vs. length normalizer & $4.46026 \times 10^{-6}$\\
+	Perceptron, new data vs. old data & 0.007976328\\
+	\hline
+\end{tabular}
+\end{center}
+
+\item
+Write a short (3-4 sentence) paragraph summarizing your results. \\
+
+\textit{Results.} 
+
+\end{enumerate}
+
+
+\end{document}  
